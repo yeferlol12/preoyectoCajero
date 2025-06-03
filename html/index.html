@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <img src="../img/fondopixel.jpg" alt="Fondo" />
+
+    <div id="loginForm" class="form-container active">
+      <h3>Iniciar Sesión</h3>
+      <form id="formLogin">
+        <input id="loginEmail" type="text" placeholder="Email" /><br />
+        <input
+          id="loginPassword"
+          type="password"
+          placeholder="Contraseña"
+        /><br />
+        <button type="submit">Entrar</button>
+      </form>
+      <p>
+        ¿No tienes cuenta? <a href="#" onclick="toggleForms()">Regístrate</a>
+      </p>
+    </div>
+
+    <div id="registerForm" class="form-container">
+      <h3>Registrarse</h3>
+      <form id="formRegistro">
+        <input type="text" id="user" placeholder="Usuario" /><br />
+        <input type="email" id="email" placeholder="Email" /><br />
+        <input type="password" id="password" placeholder="Contraseña" /><br />
+        <button type="submit">Registrar</button>
+      </form>
+      <p>
+        ¿Ya tienes cuenta? <a href="#" onclick="toggleForms()">Inicia sesión</a>
+      </p>
+      <p id="nota"></p>
+    </div>
+
+    <script src="../js/index.js"></script>
+  </body>
+</html>

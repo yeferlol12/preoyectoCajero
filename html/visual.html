@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/visual.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li id="movi">Movimientos</li>
+        <li id="trans">Transferencia</li>
+        <li id="depo">Deposito</li>
+      </ul>
+    </nav>
+
+    <div id="info">
+      <p id="saludo"></p>
+      <p>Número de cuenta: <span id="numeroCuenta"></span></p>
+      <p>Saldo actual: $<span id="saldo">0</span></p>
+    </div>
+
+    <p id="closetdiv"></p>
+
+    <div id="transferencia">
+      <h3>Enviar Dinero</h3>
+      <form id="formTransferencia">
+        <input
+          type="number"
+          id="cuentaDestino"
+          placeholder="Número de cuenta destino"
+          required
+        />
+        <br />
+        <input type="number" id="monto" placeholder="Monto a enviar" />
+        <br />
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <div id="deposito">
+      <h3>Deposito de dinero</h3>
+      <form id="formDeposito">
+        <input
+          type="number"
+          id="cuentaDeposito"
+          placeholder="Número de cuenta "
+          required
+        />
+        <br />
+        <input
+          type="number"
+          id="montoDeposito"
+          placeholder="Monto a depositar"
+        />
+        <br />
+        <button type="submit">Enviar</button>
+      </form>
+      <p id="mensaje"></p>
+    </div>
+
+    <div id="movimientos">
+      <h3>Historial de movimientos</h3>
+      <div id="listaMovimientos"></div>
+    </div>
+
+    <button id="salir">
+      Salir <img src="../img/salir.png" id="imgSalir" alt="" />
+    </button>
+
+    <script src="../js/visual.js"></script>
+  </body>
+</html>
