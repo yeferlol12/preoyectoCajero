@@ -10,6 +10,7 @@ function generarNumeroCuenta() {
 function numeroCuentaUnico() {
   const lista = JSON.parse(localStorage.getItem("personas")) || [];
   let nuevoNumero;
+
   do {
     nuevoNumero = generarNumeroCuenta();
   } while (lista.some((p) => p.numeroCuenta === nuevoNumero));
@@ -19,9 +20,7 @@ function numeroCuentaUnico() {
 //localStorage.removeItem("personas");
 //alert("Todas las personas fueron eliminadas.");
 
-document
-  .getElementById("formRegistro")
-  .addEventListener("submit", function (e) {
+document.getElementById("formRegistro").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const nombre = document.getElementById("user").value;
@@ -29,8 +28,7 @@ document
     const contraseña = document.getElementById("password").value;
     const notas = document.getElementById("nota");
 
-    const personasGuardadas =
-      JSON.parse(localStorage.getItem("personas")) || [];
+    const personasGuardadas =JSON.parse(localStorage.getItem("personas")) || [];
 
     const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     if (!emailValido) {
@@ -49,7 +47,7 @@ document
     }
 
     if (personasGuardadas.some((p) => p.email === email)) {
-      alert("Este email ya está registrado.");
+      notas=this.innerHTML="Este email ya está registrado.";
       return;
     }
 
@@ -91,3 +89,6 @@ document.getElementById("formLogin").addEventListener("submit", function (e) {
     alert("Email o contraseña incorrectos.");
   }
 });
+
+
+

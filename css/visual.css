@@ -108,6 +108,36 @@ li:hover {
   justify-content: center;
 }
 
+#retiro{
+    margin: 0%;
+  background-color: hwb(300 48% 33%);
+  display:none ;
+  width: 350px;
+  height: 150px;
+  border: 1px solid rgb(0, 0, 0);
+  position: relative;
+  left: 400px;
+  top: 250px;
+}
+
+#retiro h3 {
+  display: flex;
+  justify-content: center;
+}
+
+#formRetiro button {
+  position: relative;
+  cursor: pointer;
+  left: 10px;
+}
+
+#formRetiro input {
+  width: 200px;
+  height: 20px;
+  position: relative;
+  left: 10px;
+}
+
 #salir {
   height: 40px;
   background-color: #e74c3c;

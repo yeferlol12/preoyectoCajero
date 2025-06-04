@@ -12,6 +12,7 @@
         <li id="movi">Movimientos</li>
         <li id="trans">Transferencia</li>
         <li id="depo">Deposito</li>
+        <li id="reti">Retiro</li>
       </ul>
     </nav>
 
@@ -26,12 +27,7 @@
     <div id="transferencia">
       <h3>Enviar Dinero</h3>
       <form id="formTransferencia">
-        <input
-          type="number"
-          id="cuentaDestino"
-          placeholder="Número de cuenta destino"
-          required
-        />
+        <input type="number" id="cuentaDestino" placeholder="Número de cuenta destino" required/>
         <br />
         <input type="number" id="monto" placeholder="Monto a enviar" />
         <br />
@@ -42,18 +38,9 @@
     <div id="deposito">
       <h3>Deposito de dinero</h3>
       <form id="formDeposito">
-        <input
-          type="number"
-          id="cuentaDeposito"
-          placeholder="Número de cuenta "
-          required
-        />
+        <input type="number" id="cuentaDeposito" placeholder="Número de cuenta " required/>
         <br />
-        <input
-          type="number"
-          id="montoDeposito"
-          placeholder="Monto a depositar"
-        />
+        <input type="number" id="montoDeposito" placeholder="Monto a depositar"/>
         <br />
         <button type="submit">Enviar</button>
       </form>
@@ -63,6 +50,15 @@
     <div id="movimientos">
       <h3>Historial de movimientos</h3>
       <div id="listaMovimientos"></div>
+    </div>
+
+    <div id="retiro">
+      <h3>Retiro de dinero</h3>
+      <form id="formRetiro">
+      <input type="number" id="montoRetiro" placeholder="Monto a retirar"> 
+      <button type="submit">Retirar</button>
+      </form>
+      <p id="tex"></p>
     </div>
 
     <button id="salir">

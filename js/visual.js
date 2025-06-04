@@ -37,9 +37,7 @@ document.getElementById("trans").addEventListener("click", () => {
 });
 
 //Logica de transferencia
-document
-  .getElementById("formTransferencia")
-  .addEventListener("submit", function (e) {
+document.getElementById("formTransferencia").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const cuentaDestino = Number(
@@ -112,14 +110,12 @@ document.getElementById("depo").addEventListener("click", () => {
   }
 
   // Alternar depósito
-  depositoDiv.style.display =
-    depositoDiv.style.display === "block" ? "none" : "block";
+  depositoDiv.style.display = 
+  depositoDiv.style.display === "block" ? "none" : "block";
 });
 
 //Logica de el formulario deposito
-document
-  .getElementById("formDeposito")
-  .addEventListener("submit", function (e) {
+document.getElementById("formDeposito").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const cuentaInput = document.getElementById("cuentaDeposito").value.trim();
@@ -156,7 +152,7 @@ document
 
     destino.saldo = destino.saldo + monto;
 
-    // Guardar nuevamente en localStorage
+    
     localStorage.setItem("personas", JSON.stringify(personas));
 
     // Si el usuario activo es el mismo, actualiza su info también
@@ -226,3 +222,24 @@ document.getElementById("movi").addEventListener("click", () => {
     lista.innerHTML += `<p>${descripcion}</p>`;
   });
 });
+
+
+document.getElementById("reti").addEventListener("click",()=>{
+  const divMovimientos = document.getElementById("movimientos");
+  const depositoDiv = document.getElementById("deposito");
+  const transferenciaDiv = document.getElementById("transferencia");
+  const retiroDiv =document.getElementById("retiro");
+
+    if (transferenciaDiv.style.display === "block" || depositoDiv.style.display==="block" ||
+      divMovimientos.style.display==="block") {
+    transferenciaDiv.style.display = "none";
+    depositoDiv.style.display="none";
+    divMovimientos.style.display="none";
+  }
+
+  retiroDiv.style.display=
+  retiroDiv.style.display === "block" ? "none" : "block";
+
+
+})
+
