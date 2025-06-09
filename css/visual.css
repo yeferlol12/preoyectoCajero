@@ -101,6 +101,9 @@ li:hover {
   position: relative;
   left: 400px;
   top: 250px;
+  overflow-y: auto; /* Esto agrega scroll vertical */
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 #movimientos h3 {

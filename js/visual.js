@@ -1,6 +1,6 @@
 //Logica al undir el boton salir
 document.getElementById("salir").addEventListener("click", () => {
-  window.location.href = "index.html";
+  window.location.href = "../index.html";
 });
 
 //logica si el usuario esta activo le muestre en pantalla su nombre de usuario, cuenta y saldo
@@ -118,8 +118,8 @@ document.getElementById("depo").addEventListener("click", () => {
 document.getElementById("formDeposito").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const cuentaInput = document.getElementById("cuentaDeposito").value.trim();
-    const montoInput = document.getElementById("montoDeposito").value.trim();
+    const cuentaInput = document.getElementById("cuentaDeposito").value;
+    const montoInput = document.getElementById("montoDeposito").value;
     let mensa = document.getElementById("mensaje");
 
     const cuentaDestino = Number(cuentaInput);
@@ -155,7 +155,7 @@ document.getElementById("formDeposito").addEventListener("submit", function (e) 
     
     localStorage.setItem("personas", JSON.stringify(personas));
 
-    // Si el usuario activo es el mismo, actualiza su info también
+    
     const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
 
     if (usuarioActivo && usuarioActivo.numeroCuenta === cuentaDestino) {
@@ -194,10 +194,10 @@ document.getElementById("movi").addEventListener("click", () => {
   const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
   const movimientos = JSON.parse(localStorage.getItem("movimientos")) || [];
 
-  // Filtrar solo los movimientos del usuario
+  
   const propios = movimientos.filter(
-    (mov) =>
-      mov.desde === usuario.numeroCuenta || mov.hacia === usuario.numeroCuenta
+    (mov) => mov.desde === usuario.numeroCuenta || mov.hacia === usuario.numeroCuenta||
+    mov.cuenta === usuario.numeroCuenta
   );
 
   lista.innerHTML = "";
@@ -207,16 +207,23 @@ document.getElementById("movi").addEventListener("click", () => {
     return;
   }
 
-  // Mostrar todos los movimientos (transferencias y depósitos)
+  
   propios.forEach((mov) => {
     let descripcion = "";
 
     if (mov.tipo === "Transferencia") {
-      descripcion = `📤 <strong>Transferencia</strong> | ${mov.fecha} | $${mov.monto} 
-        de ${mov.desde} a ${mov.hacia}`;
-    } else {
-      descripcion = `💰 <strong>Depósito</strong> | ${mov.fecha} | $${mov.monto} 
-        a ${mov.hacia}`;
+      descripcion = `📤 <strong>Transferencia</strong> | ${mov.fecha} | $${mov.monto}💵 pesos
+        de la cuenta ${mov.desde} a la cuneta ${mov.hacia}`;
+    } 
+    
+    else if(mov.tipo === "Depósito") {
+      descripcion = `💵 <strong>Depósito</strong> | ${mov.fecha} | $${mov.monto}💵 pesos 
+        de la cuenta ${mov.hacia}`;
+    }
+
+    else if(mov.tipo=== "Retiro"){
+      descripcion=`📤💵 <strong>Retiro</strong> | ${mov.fecha} | $${mov.monto} 💵 pesos
+      de la ecuenta ${mov.cuenta} `
     }
 
     lista.innerHTML += `<p>${descripcion}</p>`;
@@ -225,6 +232,7 @@ document.getElementById("movi").addEventListener("click", () => {
 
 
 document.getElementById("reti").addEventListener("click",()=>{
+  
   const divMovimientos = document.getElementById("movimientos");
   const depositoDiv = document.getElementById("deposito");
   const transferenciaDiv = document.getElementById("transferencia");
@@ -239,7 +247,49 @@ document.getElementById("reti").addEventListener("click",()=>{
 
   retiroDiv.style.display=
   retiroDiv.style.display === "block" ? "none" : "block";
+});
 
 
-})
 
+document.getElementById("formRetiro").addEventListener("submit", (e)=>{
+e.preventDefault();
+  const retiro=document.getElementById("montoRetiro").value;
+  const cuenta = JSON.parse(localStorage.getItem("usuarioActivo"));
+  const texto=document.getElementById("tex");
+ 
+
+  if(retiro <=0){
+   alert("inserta un valor💵");
+    return;
+  }
+  const movimientos = JSON.parse(localStorage.getItem("movimientos")) || [];
+  
+
+  movimientos.push({
+    tipo: "Retiro",
+    fecha:new Date().toLocaleString(),
+    monto: Number(retiro),
+    cuenta:cuenta.numeroCuenta
+  });
+  localStorage.setItem("movimientos",JSON.stringify(movimientos));
+
+  const personas=JSON.parse(localStorage.getItem("personas"));
+
+  const propio= personas.find(p=> p.numeroCuenta === cuenta.numeroCuenta);
+  
+
+  if( propio.saldo >= Number(retiro)){
+    propio.saldo-=Number(retiro);
+    localStorage.setItem("personas",JSON.stringify(personas));
+    localStorage.setItem("usuarioActivo",JSON.stringify(propio));
+    texto.innerHTML="Retiro exitoso de: $" + retiro;
+
+      const nuevoSaldo = document.getElementById("saldo");
+      if (nuevoSaldo) nuevoSaldo.innerText =propio.saldo;
+  }
+  else{
+    texto.innerHTML="Saldo insuficiente";
+  }
+
+document.getElementById("formRetiro").reset();
+});

@@ -84,7 +84,7 @@ document.getElementById("formLogin").addEventListener("submit", function (e) {
     localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
 
     // Redirigir al otro HTML
-    window.location.href = "visual.html"; // cambia "home.html" por la página a la que quieres ir
+    window.location.href = "html/visual.html"; // cambia "home.html" por la página a la que quieres ir
   } else {
     alert("Email o contraseña incorrectos.");
   }
