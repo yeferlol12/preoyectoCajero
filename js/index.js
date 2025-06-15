@@ -62,7 +62,7 @@ document.getElementById("formRegistro").addEventListener("submit", function (e) 
     personasGuardadas.push(persona);
     localStorage.setItem("personas", JSON.stringify(personasGuardadas));
 
-    alert("Registro exitoso. Tu número de cuenta es: " + persona.numeroCuenta);
+    notas.innerHTML=("Registro exitoso. Tu número de cuenta es: " + persona.numeroCuenta);
     this.reset(); // limpia el formulario
   });
 

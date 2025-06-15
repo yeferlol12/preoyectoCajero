@@ -31,7 +31,8 @@ li:hover {
 
 #transferencia {
   margin: 0%;
-  background-color: hwb(300 48% 33%);
+   background-color: #f0f0f0;
+  border-right: 1px solid #c4b5b5;
   display: none;
   width: 250px;
   height: 200px;
@@ -62,7 +63,8 @@ li:hover {
 
 #deposito {
   margin: 0%;
-  background-color: hwb(300 48% 33%);
+   background-color: #f0f0f0;
+  border-right: 1px solid #c4b5b5;
   display: none;
   width: 250px;
   height: 200px;
@@ -70,10 +72,17 @@ li:hover {
   position: relative;
   left: 400px;
   top: 250px;
+} 
+
+#mensaje{
+  position:relative;
+  top: 20px;
 }
 
-#formDeposito input {
-  width: 200px;
+
+
+#formDeposito input{
+   width: 200px;
   height: 20px;
   display: block;
   position: relative;
@@ -93,7 +102,8 @@ li:hover {
 
 #movimientos {
   margin: 0%;
-  background-color: hwb(300 48% 33%);
+  background-color: #f0f0f0;
+  border-right: 1px solid #c4b5b5;
   display: none;
   width: 350px;
   height: 200px;
@@ -101,7 +111,7 @@ li:hover {
   position: relative;
   left: 400px;
   top: 250px;
-  overflow-y: auto; /* Esto agrega scroll vertical */
+  overflow-y: auto; 
   padding: 10px;
   box-sizing: border-box;
 }
@@ -113,10 +123,11 @@ li:hover {
 
 #retiro{
     margin: 0%;
-  background-color: hwb(300 48% 33%);
+   background-color: #f0f0f0;
+  border-right: 1px solid #c4b5b5;
   display:none ;
-  width: 350px;
-  height: 150px;
+  width: 300px;
+  height: 110px;
   border: 1px solid rgb(0, 0, 0);
   position: relative;
   left: 400px;
@@ -126,6 +137,11 @@ li:hover {
 #retiro h3 {
   display: flex;
   justify-content: center;
+}
+
+#tex{
+  position: relative;
+  top: 20px;
 }
 
 #formRetiro button {
